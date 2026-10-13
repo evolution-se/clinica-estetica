@@ -1,0 +1,6 @@
+# robots.txt — Maison Aurea Estética (site demonstrativo)
+User-agent: *
+Allow: /
+
+# SUBSTITUIR pelo domínio real antes da publicação
+Sitemap: https://www.seudominio.com.br/sitemap.xml

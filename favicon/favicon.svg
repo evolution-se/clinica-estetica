@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Maison Aurea">
+  <!-- Monograma demonstrativo: substituir pelo favicon oficial da clínica -->
+  <rect width="64" height="64" rx="6" fill="#4A3F36"/>
+  <path d="M16 46V18l16 17 16-17v28" fill="none" stroke="#FBF8F3" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"/>
+  <rect x="22" y="51" width="20" height="2.5" fill="#B89B6A"/>
+</svg>
