@@ -14,10 +14,10 @@
   --c-surface: #F1EADF;
   --c-surface-alt: #FFFFFF;
   --c-text: #2E2924;
-  --c-muted: #7A6E62;
+  --c-muted: #5B5046;
   --c-border: #E4DACB;
-  --c-whatsapp: #2F7D5B;
-  --c-gold-text: #8A6D3B;      /* dourado escurecido: texto pequeno com contraste AA */
+  --c-whatsapp: #236A4B;
+  --c-gold-text: #6B5327;      /* dourado escurecido: texto pequeno com contraste AA (>=4.5:1) */
   --c-footer: #3A3029;
   --c-on-dark: #FBF8F3;
 
@@ -137,12 +137,22 @@ p {
 }
 
 .section-eyebrow {
-  font-size: 0.75rem;
-  font-weight: 500;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 1rem;
+  padding-left: 0.2em;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--c-gold-text);
-  margin-bottom: 1rem;
+}
+.section-header--left .section-eyebrow {
+  margin-inline: 0;
+  text-align: left;
+  padding-left: 0;
 }
 .section-eyebrow--light {
   color: var(--c-accent);
@@ -174,6 +184,9 @@ p {
   font-size: 1.0625rem;
   line-height: 1.75;
   margin-inline: auto;
+  max-width: 44rem;
+  text-align: center;
+  text-wrap: balance;
 }
 .section-header--left .section-subtitle,
 .section-header--left .section-lead {
@@ -280,7 +293,7 @@ p {
 /* Selo discreto demonstrativo */
 .badge-demo {
   display: inline-block;
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -347,7 +360,7 @@ p {
   color: var(--c-primary);
 }
 .brand-sub {
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--c-muted);
@@ -403,16 +416,17 @@ p {
   box-shadow: 0 0 0 0.2rem rgba(184, 155, 106, 0.35);
 }
 .navbar-toggler-icon {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 22px;
-}
-.navbar-toggler-icon span {
-  display: block;
-  height: 1.5px;
-  background: var(--c-primary);
-  border-radius: 2px;
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  /* Tom marrom do tema como fallback; Bootstrap sobrescreve quando disponível */
+  background-image: var(--bs-navbar-toggler-icon-bg, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%234A3F36' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"));
 }
 /* Menu mobile em painel */
 @media (max-width: 991.98px) {
@@ -453,7 +467,21 @@ p {
 .hero {
   padding-top: var(--header-h);
   background-color: var(--c-bg);
-  overflow: hidden;
+  overflow: clip;
+}
+
+.hero-content,
+.hero-title,
+.hero-subtitle,
+.hero-actions,
+.hero-trust {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.hero-title {
+  overflow-wrap: anywhere;
 }
 
 .hero-row {
@@ -469,9 +497,14 @@ p {
 
 .hero-eyebrow {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
-  font-size: 0.75rem;
+  row-gap: 0.5rem;
+  column-gap: 1rem;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -480,14 +513,17 @@ p {
 }
 .hero-eyebrow-line {
   display: inline-block;
+  flex: 0 0 auto;
   width: 3rem;
   height: 1px;
   background: var(--c-secondary);
 }
 
 .hero-title {
-  font-size: clamp(2.4rem, 1.5rem + 4vw, 4rem);
-  line-height: 1.1;
+  font-size: clamp(2rem, 1.35rem + 4vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
   margin-bottom: 1.5rem;
 }
 .hero-title em {
@@ -507,6 +543,15 @@ p {
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 2.5rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.hero-actions .btn {
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .hero-trust {
@@ -571,7 +616,7 @@ p {
   border: 1px solid var(--c-border);
   border-radius: var(--radius-sm);
   padding: 0.7rem 1.1rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   letter-spacing: 0.04em;
   color: var(--c-text);
   box-shadow: var(--shadow-soft);
@@ -672,7 +717,7 @@ p {
 .filter-btn {
   flex: 0 0 auto;
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -729,7 +774,7 @@ p {
 }
 
 .card-procedure__cat {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -864,7 +909,7 @@ p {
   flex-grow: 1;
 }
 .card-member__role {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -885,7 +930,7 @@ p {
   font-weight: 500;
 }
 .card-member__register {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   letter-spacing: 0.04em;
   color: var(--c-gold-text);
   border-top: 1px solid var(--c-border);
@@ -1016,11 +1061,14 @@ p {
 }
 /* ---------- 12. LINHA DO TEMPO (ETAPAS) ---------- */
 .timeline {
+  --tl-num: clamp(3rem, 2.75rem + 1vw, 4rem);
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
+  width: 100%;
+  max-width: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1.5rem;
   counter-reset: none;
   position: relative;
@@ -1036,20 +1084,25 @@ p {
 }
 .timeline-item {
   position: relative;
+  min-width: 0;
+  max-width: 100%;
   text-align: center;
   padding-top: 0;
 }
-.timeline-num {
+.timeline-item .timeline-num {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 4rem;
-  height: 4rem;
+  width: var(--tl-num);
+  height: var(--tl-num);
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
   border-radius: 50%;
   background: var(--c-surface);
   border: 1px solid var(--c-secondary);
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.5rem);
+  line-height: 1;
   color: var(--c-primary);
   margin-bottom: 1.25rem;
   position: relative;
@@ -1060,7 +1113,7 @@ p {
   margin-bottom: 0.5rem;
 }
 .timeline-item p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--c-muted);
   line-height: 1.7;
   margin: 0 auto;
@@ -1309,7 +1362,7 @@ p {
   text-underline-offset: 0.25em;
 }
 .contact-info__item p.contact-info__note {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--c-gold-text);
@@ -1429,7 +1482,7 @@ p {
   margin-bottom: 0.35rem;
 }
 .footer-brand-sub {
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--c-accent);
@@ -1443,7 +1496,7 @@ p {
   margin-bottom: 1.5rem;
 }
 .footer-title {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1493,14 +1546,14 @@ p {
   gap: 0.75rem;
 }
 .footer-compliance {
-  font-size: 0.8rem;
-  color: rgba(251, 248, 243, 0.65);
+  font-size: 0.9rem;
+  color: rgba(251, 248, 243, 0.82);
   max-width: 65ch;
   margin: 0;
 }
 .footer-copy {
-  font-size: 0.8rem;
-  color: rgba(251, 248, 243, 0.65);
+  font-size: 0.9rem;
+  color: rgba(251, 248, 243, 0.82);
   margin: 0;
 }
 
@@ -1631,6 +1684,19 @@ p {
   .diferenciais-item:nth-child(2n + 1) {
     border-left: none;
   }
+  .timeline {
+    --tl-num: clamp(2.75rem, 2.5rem + 1vw, 3.25rem);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem 1.5rem;
+  }
+  .timeline::before {
+    display: none;
+  }
+  .timeline-item .timeline-num {
+    width: var(--tl-num);
+    height: var(--tl-num);
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
+  }
 }
 
 @media (max-width: 991.98px) {
@@ -1660,17 +1726,20 @@ p {
   }
   .hero-actions .btn {
     flex: 1 1 100%;
+    width: 100%;
     text-align: center;
   }
 
   .timeline {
+    --tl-num: clamp(2.75rem, 2.5rem + 3.5vw, 3.25rem);
     grid-template-columns: 1fr;
     gap: 0;
   }
   .timeline::before {
+    display: block;
     top: 0;
     bottom: 0;
-    left: 2rem;
+    left: calc(var(--tl-num) / 2);
     right: auto;
     width: 0;
     height: auto;
@@ -1679,7 +1748,7 @@ p {
   }
   .timeline-item {
     display: grid;
-    grid-template-columns: 4rem 1fr;
+    grid-template-columns: var(--tl-num) minmax(0, 1fr);
     grid-template-areas:
       "num title"
       "num desc";
@@ -1687,9 +1756,31 @@ p {
     text-align: left;
     padding-block: 1.25rem;
   }
-  .timeline-num { grid-area: num; margin-bottom: 0; }
-  .timeline-item h3 { grid-area: title; align-self: end; }
-  .timeline-item p { grid-area: desc; margin: 0; }
+  .timeline-item .timeline-num {
+    grid-area: num;
+    justify-self: start;
+    align-self: start;
+    width: var(--tl-num);
+    height: var(--tl-num);
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
+    margin: 0;
+    flex-shrink: 0;
+  }
+  .timeline-item h3 {
+    grid-area: title;
+    align-self: end;
+    margin: 0 0 0.35rem;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+  .timeline-item > p:not(.timeline-num) {
+    grid-area: desc;
+    margin: 0;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
 
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1712,6 +1803,45 @@ p {
 }
 
 @media (max-width: 767.98px) {
+  .timeline {
+    --tl-num: 3rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 30rem;
+  }
+  .timeline::before {
+    display: none;
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: var(--tl-num) minmax(0, 1fr);
+    grid-template-areas:
+      "num title"
+      "num desc";
+    column-gap: 1rem;
+    align-items: start;
+    text-align: left;
+    background: var(--c-bg);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.25rem 1.35rem;
+  }
+  .timeline-item .timeline-num {
+    grid-area: num;
+    width: var(--tl-num);
+    height: var(--tl-num);
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  .timeline-item h3 {
+    grid-area: title;
+    font-size: 1.15rem;
+  }
+  .timeline-item > p:not(.timeline-num) {
+    grid-area: desc;
+    margin: 0;
+    font-size: 1rem;
+  }
   .gallery-grid {
     grid-template-columns: 1fr;
   }
