@@ -946,24 +946,37 @@ p {
 }
 
 .formacao-block {
-  max-width: 46rem;
+  max-width: 64rem;
   margin: 3rem auto 0;
   text-align: center;
   background: var(--c-surface);
   border: 1px solid var(--c-border);
   border-radius: var(--radius-md);
   padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .formacao-block__title {
   font-family: var(--font-display);
   font-size: 1.25rem;
   color: var(--c-primary);
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 .formacao-block__text {
   font-size: 0.9rem;
   color: var(--c-muted);
   margin: 0 auto;
+  text-align: center;
+  max-width: 100%;
+}
+.formacao-block__note {
+  font-size: 0.8rem;
+  color: var(--c-muted);
+  margin-top: 0.75rem;
+  text-align: center;
 }
 
 .section-cta {
@@ -1029,6 +1042,8 @@ p {
 .gallery-note {
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   flex-wrap: wrap;
   gap: 0.75rem;
   margin: 1.5rem auto 0;
@@ -1907,6 +1922,12 @@ p {
   *,
   *::before,
   *::after {
+.contact-demo-note {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--c-muted);
+  margin-top: 2rem;
+}
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
