@@ -54,6 +54,11 @@ html {
   scroll-padding-top: calc(var(--header-h-scrolled) + 1rem);
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   background-color: var(--c-bg);
   color: var(--c-text);
@@ -468,6 +473,7 @@ p {
   padding-top: var(--header-h);
   background-color: var(--c-bg);
   overflow: clip;
+  overflow-x: hidden;
 }
 
 .hero-content,
@@ -630,6 +636,7 @@ p {
 .clinica-composition {
   position: relative;
   padding: 2rem 0 3.5rem 3rem;
+  overflow: hidden;
 }
 .clinica-line {
   position: absolute;
@@ -1860,6 +1867,11 @@ p {
   .gallery-grid {
     grid-template-columns: 1fr;
   }
+  .procedure-filter {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    justify-content: center;
+  }
   .clinica-composition {
     padding: 1.5rem 0 3rem 2rem;
   }
@@ -1922,12 +1934,6 @@ p {
   *,
   *::before,
   *::after {
-.contact-demo-note {
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--c-muted);
-  margin-top: 2rem;
-}
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
